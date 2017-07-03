@@ -6,13 +6,13 @@
 
 @section('content')
     <div class="columns">
-        <div class="column is-8 is-offset-2">
+        <div class="column">
             <form action="{{ route('json.update', ['json' => $json]) }}" method="post">
                 {{ csrf_field() }}
                 <textarea name="json_data" id="json_data" style="display: none;">{!! empty($json->json_data) ? '' : json_encode(json_decode($json->json_data, true), JSON_PRETTY_PRINT) !!}</textarea>
                 <div class="field">
                     <label for="json_data" class="label">Your JSON content</label>
-                    <div id="json_editor" style="width: 100%; height: 325px; {{ $errors->has('json_data') ? 'border: 1px solid red;' : '' }}"></div>
+                    <div id="json_editor" style="width: 100%; height: 650px; {{ $errors->has('json_data') ? 'border: 1px solid red;' : '' }}"></div>
                     @if ($errors->has('json_data'))
                         <p class="help is-danger">{{ $errors->first('json_data') }}</p>
                     @endif
